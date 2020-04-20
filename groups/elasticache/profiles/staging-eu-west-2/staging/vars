@@ -1,0 +1,7 @@
+
+environment = "staging"
+
+# Elasticache
+node_type = "cache.m5.large"
+node_count = 3
+engine_version = "5.0.6"
