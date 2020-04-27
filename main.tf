@@ -32,7 +32,7 @@ resource "aws_security_group" "elasticache" {
 # # ------------------------------------------------------------------------------
 
 resource "aws_elasticache_subnet_group" "elasticache" {
-  name       = "${var.service}-elasticache-subnet-group"
+  name       = "${var.environment}-${var.service}-elasticache-subnet-group"
   subnet_ids = ["${split(",", var.subnet_ids)}"]
 }
 
