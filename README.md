@@ -1,3 +1,7 @@
-# ch-service-elasticache-terraform
+# terraform-library-elasticache
 
-## Coming Soon
+Terraform library providing an Elasticache cluster and associated resources.
+
+## ch-service-elasticache
+
+It is called as a module in ch-service-terraform to create an Elasticache cluster for each CHS environment.
