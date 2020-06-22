@@ -27,7 +27,7 @@ variable "ingress_subnet_cidrs" {
 # Elasticache
 variable "provision_elasticache" {
   type = "string"
-  default = "false"
+  default = "true"
 }
 
 variable "cache_node_type" {
