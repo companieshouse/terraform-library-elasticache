@@ -1,5 +1,4 @@
 
-# Tags
 variable "environment" {
   type    = "string"
   description = "The name of the environment for tagging"
@@ -26,6 +25,11 @@ variable "ingress_subnet_cidrs" {
 }
 
 # Elasticache
+variable "provision_elasticache" {
+  type = "string"
+  default = "false"
+}
+
 variable "cache_node_type" {
   type = "string"
 }
