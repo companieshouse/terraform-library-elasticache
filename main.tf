@@ -39,6 +39,7 @@ resource "aws_elasticache_subnet_group" "elasticache" {
 }
 
 resource "aws_elasticache_replication_group" "redis" {
+  count = "${var.provision_elasticache ? 1 : 0}"
   automatic_failover_enabled    = "${var.cache_node_count == 1 ? false : true}"
   auto_minor_version_upgrade    = true
 
