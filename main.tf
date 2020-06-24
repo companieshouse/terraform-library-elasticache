@@ -3,6 +3,7 @@
 # # Security Group
 # # ------------------------------------------------------------------------------
 resource "aws_security_group" "elasticache" {
+  count = "${var.provision_elasticache ? 1 : 0}"
   name   = "${var.environment} ${var.service} elasticache security group"
   vpc_id = "${var.vpc_id}"
 
@@ -32,11 +33,13 @@ resource "aws_security_group" "elasticache" {
 # # ------------------------------------------------------------------------------
 
 resource "aws_elasticache_subnet_group" "elasticache" {
+  count = "${var.provision_elasticache ? 1 : 0}"
   name       = "${var.environment}-${var.service}-elasticache-subnet-group"
   subnet_ids = ["${split(",", var.subnet_ids)}"]
 }
 
 resource "aws_elasticache_replication_group" "redis" {
+  count = "${var.provision_elasticache ? 1 : 0}"
   automatic_failover_enabled    = "${var.cache_node_count == 1 ? false : true}"
   auto_minor_version_upgrade    = true
 
