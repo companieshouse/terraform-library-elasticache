@@ -47,7 +47,7 @@ resource "aws_elasticache_replication_group" "redis" {
   replication_group_id          = "${var.environment}-${var.service}-elasticache"
   replication_group_description = "Elasticache Redis cluster"
 
-  subnet_group_name = aws_elasticache_subnet_group.elasticache.name
+  subnet_group_name = aws_elasticache_subnet_group.elasticache[0].name
 
   node_type              = var.cache_node_type
   number_cache_clusters  = var.cache_node_count
