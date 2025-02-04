@@ -41,17 +41,17 @@ resource "aws_elasticache_subnet_group" "elasticache" {
 resource "aws_elasticache_replication_group" "redis" {
   count = var.provision_elasticache ? 1 : 0
 
-  automatic_failover_enabled    = var.cache_node_count == 1 ? false : true
-  auto_minor_version_upgrade    = true
+  description                = "Elasticache Redis cluster"
+  automatic_failover_enabled = var.cache_node_count == 1 ? false : true
+  auto_minor_version_upgrade = true
 
-  replication_group_id          = "${var.environment}-${var.service}-elasticache"
-  replication_group_description = "Elasticache Redis cluster"
+  replication_group_id = "${var.environment}-${var.service}-elasticache"
 
   subnet_group_name = aws_elasticache_subnet_group.elasticache[0].name
 
-  node_type              = var.cache_node_type
-  number_cache_clusters  = var.cache_node_count
-  engine_version         = var.cache_engine_version
+  node_type          = var.cache_node_type
+  num_cache_clusters = var.cache_node_count
+  engine_version     = var.cache_engine_version
 
   security_group_ids    = [aws_security_group.elasticache[0].id]
   port                  = 6379
