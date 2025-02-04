@@ -35,7 +35,7 @@ variable "cache_node_type" {
 }
 
 variable "cache_node_count" {
-  type = string
+  type = number
 }
 
 variable "cache_engine_version" {
