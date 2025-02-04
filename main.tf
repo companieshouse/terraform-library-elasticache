@@ -8,23 +8,23 @@ resource "aws_security_group" "elasticache" {
   vpc_id = var.vpc_id
 
   ingress {
-    from_port = 6379
-    to_port   = 6379
-    protocol  = "tcp"
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
     cidr_blocks = split(",", var.ingress_subnet_cidrs)
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
-    Name = "${var.environment}-${var.service}-elasticache-security-group"
+    Name        = "${var.environment}-${var.service}-elasticache-security-group"
     Environment = var.environment
-    Service = var.service
+    Service     = var.service
   }
 }
 
@@ -53,12 +53,12 @@ resource "aws_elasticache_replication_group" "redis" {
   num_cache_clusters = var.cache_node_count
   engine_version     = var.cache_engine_version
 
-  security_group_ids    = [aws_security_group.elasticache[0].id]
-  port                  = 6379
+  security_group_ids = [aws_security_group.elasticache[0].id]
+  port               = 6379
 
   tags = {
-    Name = "${var.environment}-${var.service}-elasticache"
+    Name        = "${var.environment}-${var.service}-elasticache"
     Environment = var.environment
-    Service = var.service
+    Service     = var.service
   }
 }
