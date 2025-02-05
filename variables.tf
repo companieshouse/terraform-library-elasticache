@@ -41,3 +41,8 @@ variable "cache_node_count" {
 variable "cache_engine_version" {
   type = string
 }
+
+variable "multi_az_enabled" {
+  description = "Defines whether multi_az should be enabled, if requirements are met; namely cache_node_count must also be > 1"
+  type        = bool
+}

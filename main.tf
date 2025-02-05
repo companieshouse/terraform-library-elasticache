@@ -44,6 +44,7 @@ resource "aws_elasticache_replication_group" "redis" {
   description                = "Elasticache Redis cluster"
   automatic_failover_enabled = var.cache_node_count == 1 ? false : true
   auto_minor_version_upgrade = true
+  multi_az_enabled           = local.multi_az_enabled
 
   replication_group_id = "${var.environment}-${var.service}-elasticache"
 
